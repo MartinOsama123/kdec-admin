@@ -74,7 +74,7 @@ namespace PlayerUI
             Rtc.JoinChannel(token1, title.Text, "", 0);
             Post(new Session(title.Text,richTextBox1.Text,hostName.Text,comboBox1.Text, token1,dialog1.SafeFileName));
             byte[] buffer1 = File.ReadAllBytes(dialog1.FileName);
-         //   UploadMultipartImage(buffer1, dialog1.SafeFileName, "form-data", "https://kdechurch.herokuapp.com/api/upload/img/" + dialog1.SafeFileName);
+            UploadMultipartImage(buffer1, dialog1.SafeFileName, "form-data", "https://kdechurch.herokuapp.com/api/upload/img/" + dialog1.SafeFileName);
             MessageBox.Show(@"You are now Live, Start talking.", @"Message", MessageBoxButtons.OK);
 
 
