@@ -1,0 +1,248 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "agora_rtc_sdk/3.2.1.7": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1-beta1"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/agorartc.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/agorartc.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/netcoreapp3.1/agora_rtc_sdk.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/iris.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/libagora-fdkaac.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/libagora-ffmpeg.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/libagora-mpg123.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/libagora-soundtouch.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netcoreapp3.1/libhwcodec.dll": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
+      "Crc32.NET/1.2.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Crc32.NET.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Crc32.NET.dll": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "AgoraIO/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Crc32.NET": "1.2.0"
+        },
+        "compile": {
+          "bin/placeholder/AgoraIO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AgoraIO.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "agora_rtc_sdk/3.2.1.7": {
+      "sha512": "bnYZybTBqrT+IFixp+ZNxEKnm+ZS5fcmHRStiVu0JLgpQXlHHSbVjOjpDInFb46jAQsiM5t0crJruovJXxgaEw==",
+      "type": "package",
+      "path": "agora_rtc_sdk/3.2.1.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "agora_rtc_sdk.3.2.1.7.nupkg.sha512",
+        "agora_rtc_sdk.nuspec",
+        "content/agora_rtc_sdk.dll",
+        "content/iris.dll",
+        "content/libagora-fdkaac.dll",
+        "content/libagora-ffmpeg.dll",
+        "content/libagora-mpg123.dll",
+        "content/libagora-soundtouch.dll",
+        "content/libhwcodec.dll",
+        "contentFiles/any/netcoreapp3.1/agora_rtc_sdk.dll",
+        "contentFiles/any/netcoreapp3.1/iris.dll",
+        "contentFiles/any/netcoreapp3.1/libagora-fdkaac.dll",
+        "contentFiles/any/netcoreapp3.1/libagora-ffmpeg.dll",
+        "contentFiles/any/netcoreapp3.1/libagora-mpg123.dll",
+        "contentFiles/any/netcoreapp3.1/libagora-soundtouch.dll",
+        "contentFiles/any/netcoreapp3.1/libhwcodec.dll",
+        "lib/netcoreapp3.1/agorartc.dll"
+      ]
+    },
+    "Crc32.NET/1.2.0": {
+      "sha512": "wNW/huzolu8MNKUnwCVKxjfAlCFpeI8AZVfF46iAWJ1+P6bTU1AZct7VAkDDEjgeeTJCVTkGZaD6jSd/fOiUkA==",
+      "type": "package",
+      "path": "crc32.net/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "crc32.net.1.2.0.nupkg.sha512",
+        "crc32.net.nuspec",
+        "lib/net20/Crc32.NET.dll",
+        "lib/net20/Crc32.NET.xml",
+        "lib/netstandard1.3/Crc32.NET.dll",
+        "lib/netstandard1.3/Crc32.NET.xml",
+        "lib/netstandard2.0/Crc32.NET.dll",
+        "lib/netstandard2.0/Crc32.NET.xml"
+      ]
+    },
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "AgoraIO/1.0.0": {
+      "type": "project",
+      "path": "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\AgoraIO.csproj",
+      "msbuildProject": "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\AgoraIO.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "AgoraIO >= 1.0.0",
+      "Newtonsoft.Json >= 13.0.1",
+      "agora_rtc_sdk >= 3.2.1.7"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\PC\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\PC\\source\\repos\\admin-panel\\admin-panel\\admin-panel.csproj",
+      "projectName": "admin-panel",
+      "projectPath": "C:\\Users\\PC\\source\\repos\\admin-panel\\admin-panel\\admin-panel.csproj",
+      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\PC\\source\\repos\\admin-panel\\admin-panel\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "projectReferences": {
+            "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\AgoraIO.csproj": {
+              "projectPath": "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\AgoraIO.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
+        "dependencies": {
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.1, )"
+          },
+          "agora_rtc_sdk": {
+            "target": "Package",
+            "version": "[3.2.1.7, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

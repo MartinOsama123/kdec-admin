@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "+JNPQJagZNrw8CdF/L+x3jf1Lsk0m6BFQIbUsVmbJkmfic4B9qmHU1aJ5BsL8KIl9qO1HvGjk2VOCeHJ1mDDrA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\PC\\source\\repos\\admin-panel\\admin-panel\\admin-panel.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\PC\\.nuget\\packages\\agora_rtc_sdk\\3.2.1.7\\agora_rtc_sdk.3.2.1.7.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\crc32.net\\1.2.0\\crc32.net.1.2.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>admin_panel</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="agora_rtc_sdk" Version="3.2.1.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="F:\Tools\DynamicKey\AgoraDynamicKey\csharp\src\AgoraIO\AgoraIO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\agora_rtc_sdk.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\iris.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-fdkaac.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-ffmpeg.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-mpg123.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-soundtouch.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libhwcodec.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
