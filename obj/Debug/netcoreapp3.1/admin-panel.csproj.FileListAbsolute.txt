@@ -31,3 +31,6 @@ C:\Users\PC\source\repos\admin-panel\admin-panel\bin\Debug\netcoreapp3.1\Crc32.N
 C:\Users\PC\source\repos\admin-panel\admin-panel\bin\Debug\netcoreapp3.1\AgoraIO.dll
 C:\Users\PC\source\repos\admin-panel\admin-panel\bin\Debug\netcoreapp3.1\AgoraIO.pdb
 C:\Users\PC\source\repos\admin-panel\admin-panel\obj\Debug\netcoreapp3.1\admin_panel.Properties.Resources.resources
+C:\Users\PC\source\repos\admin-panel\admin-panel\obj\Debug\netcoreapp3.1\admin_panel.ScheduleForm.resources
+C:\Users\PC\source\repos\admin-panel\admin-panel\obj\Debug\netcoreapp3.1\admin_panel.UsersForm.resources
+C:\Users\PC\source\repos\admin-panel\admin-panel\obj\Debug\netcoreapp3.1\admin_panel.CustomNotificationForm.resources

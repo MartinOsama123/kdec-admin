@@ -9,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -73,23 +74,22 @@ namespace PlayerUI
 
             Rtc.JoinChannel(token1, title.Text, "", 0);
             Post(new Session(title.Text,richTextBox1.Text,hostName.Text,comboBox1.Text, token1,dialog1.SafeFileName));
+        
             byte[] buffer1 = File.ReadAllBytes(dialog1.FileName);
-            UploadMultipartImage(buffer1, dialog1.SafeFileName, "form-data", "https://kdechurch.herokuapp.com/api/upload/img/" + dialog1.SafeFileName);
+            UploadMultipartImageAsync(buffer1, dialog1.SafeFileName, "form-data", "https://kdechurch.herokuapp.com/api/upload/img/" + dialog1.SafeFileName);
             MessageBox.Show(@"You are now Live, Start talking.", @"Message", MessageBoxButtons.OK);
 
 
         }
-        public void UploadMultipartImage(byte[] file, string filename, string contentType, string url)
+        public async void UploadMultipartImageAsync(byte[] file, string filename, string contentType, string url)
         {
-            var webClient = new WebClient();
-            string boundary = "------------------------" + DateTime.Now.Ticks.ToString("x");
-            webClient.Headers.Add("Content-Type", "multipart/form-data; boundary=" + boundary);
-            var fileData = webClient.Encoding.GetString(file);
-            var package = string.Format("--{0}\r\nContent-Disposition: form-data; name=\"image\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n{3}\r\n--{0}--\r\n", boundary, filename, contentType, fileData);
+            HttpClient httpClient = new HttpClient();
+            MultipartFormDataContent form = new MultipartFormDataContent();
 
-            var nfile = webClient.Encoding.GetBytes(package);
-
-            byte[] resp = webClient.UploadData(url, "POST", nfile);
+            form.Add(new ByteArrayContent(file, 0, file.Length), "image", filename);
+            HttpResponseMessage response = await httpClient.PostAsync(url, form);
+            response.EnsureSuccessStatusCode();
+            httpClient.Dispose();
         }
         private bool CheckChannelName()
         {

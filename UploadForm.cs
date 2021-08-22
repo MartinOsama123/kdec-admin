@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Windows.Forms;
+using admin_panel;
 
 namespace PlayerUI
 {
@@ -44,6 +45,7 @@ namespace PlayerUI
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             dialog1 = new OpenFileDialog();
+            dialog1.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
             if (dialog1.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.ImageLocation = dialog1.FileName;
@@ -53,6 +55,7 @@ namespace PlayerUI
         private void browseBtn_Click(object sender, EventArgs e)
         {
             dialog = new OpenFileDialog();
+            dialog.Filter = "(*.mp3)|*.mp3";
             dialog.Multiselect = true;
 
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -61,43 +64,40 @@ namespace PlayerUI
             }
         }
 
-        private void confirmBtn_Click(object sender, EventArgs e)
+        private async void confirmBtn_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < dialog.FileNames.Length; i++)
             {
                 byte[] buffer = File.ReadAllBytes(dialog.FileNames[i]);
-                UploadMultipartMP3(buffer, dialog.SafeFileNames[i], "form-data", "https://kdechurch.herokuapp.com/church/upload");
+                await UploadMultipartMP3(buffer, dialog.SafeFileNames[i], "https://kdechurch.herokuapp.com/church/upload");
                 uploadDatabase(new SongInfo(comboBox2.Text, comboBox1.Text, dialog.SafeFileNames[i]));
             }
             byte[] buffer1 = File.ReadAllBytes(dialog1.FileName);
-            UploadMultipartImage(buffer1, dialog1.SafeFileName, "form-data", "https://kdechurch.herokuapp.com/api/upload/img/" + comboBox2.Text);
+           await UploadMultipartImage(buffer1, dialog1.SafeFileName, "https://kdechurch.herokuapp.com/api/upload/img/" + comboBox2.Text);
             MessageBox.Show("File Uploaded Successfully.");
             textBox1.Clear();
             pictureBox1.Image = pictureBox1.InitialImage;
+            sendNotification(comboBox2.Text,"Global");
         }
-        public void UploadMultipartMP3(byte[] file, string filename, string contentType, string url)
+        public async Task UploadMultipartMP3(byte[] file, string filename, string url)
         {
-            var webClient = new WebClient();
-            string boundary = "------------------------" + DateTime.Now.Ticks.ToString("x");
-            webClient.Headers.Add("Content-Type", "multipart/form-data; boundary=" + boundary);
-            var fileData = webClient.Encoding.GetString(file);
-            var package = string.Format("--{0}\r\nContent-Disposition: form-data; name=\"files\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n{3}\r\n--{0}--\r\n", boundary, filename, contentType, fileData);
+            HttpClient httpClient = new HttpClient();
+            MultipartFormDataContent form = new MultipartFormDataContent();
 
-            var nfile = webClient.Encoding.GetBytes(package);
-
-            byte[] resp = webClient.UploadData(url, "POST", nfile);
+            form.Add(new ByteArrayContent(file, 0, file.Length), "files", filename);
+            HttpResponseMessage response = await httpClient.PostAsync(url, form);
+            response.EnsureSuccessStatusCode();
+            httpClient.Dispose();
         }
-        public void UploadMultipartImage(byte[] file, string filename, string contentType, string url)
+        public async Task UploadMultipartImage(byte[] file, string filename, string url)
         {
-            var webClient = new WebClient();
-            string boundary = "------------------------" + DateTime.Now.Ticks.ToString("x");
-            webClient.Headers.Add("Content-Type", "multipart/form-data; boundary=" + boundary);
-            var fileData = webClient.Encoding.GetString(file);
-            var package = string.Format("--{0}\r\nContent-Disposition: form-data; name=\"image\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n{3}\r\n--{0}--\r\n", boundary, filename, contentType, fileData);
+            HttpClient httpClient = new HttpClient();
+            MultipartFormDataContent form = new MultipartFormDataContent();
 
-            var nfile = webClient.Encoding.GetBytes(package);
-
-            byte[] resp = webClient.UploadData(url, "POST", nfile);
+            form.Add(new ByteArrayContent(file, 0, file.Length), "image", filename);
+            HttpResponseMessage response = await httpClient.PostAsync(url, form);
+            response.EnsureSuccessStatusCode();
+            httpClient.Dispose();
         }
         public async void uploadDatabase(SongInfo songInfo)
         {
@@ -130,6 +130,28 @@ namespace PlayerUI
             {
                 comboBox2.Items.Add(t.albumName);
             }
+        }
+        private void sendNotification(string album, string channel)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kdechurch.herokuapp.com/api/send-notification");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+            Note note = new Note("New Album Release", album, channel);
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                var json = JsonConvert.SerializeObject(note, Formatting.Indented);
+
+                System.Diagnostics.Debug.WriteLine(json);
+                streamWriter.Write(json);
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+            }
+
+
         }
     }
 }

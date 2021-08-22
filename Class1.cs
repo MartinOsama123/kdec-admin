@@ -9,9 +9,9 @@ namespace PlayerUI
     public class SongInfo
     {
         public int id;
-        public String albumName;
-        public String lang;
-        public String songName;
+        public string albumName;
+        public string lang;
+        public string songName;
 
         public SongInfo()
         {

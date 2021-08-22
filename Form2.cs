@@ -30,10 +30,16 @@ namespace PlayerUI
             this.Close();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private  void button4_Click(object sender, EventArgs e)
         {
             if (treeView1.SelectedNode.Parent != null)
-                deleteSong(map[treeView1.SelectedNode.Parent.Text][treeView1.SelectedNode.Index]);
+            {
+                int index = treeView1.SelectedNode.Index;
+       
+                string parent = treeView1.SelectedNode.Parent.Text;
+                 deleteSong(map[treeView1.SelectedNode.Parent.Text][treeView1.SelectedNode.Index]);
+           
+            }
             else
             {
                 deleteAlbum(treeView1.SelectedNode.Text);
@@ -56,7 +62,7 @@ namespace PlayerUI
         {
             using (var client = new HttpClient())
             {
-                // This would be the like http://www.uber.com
+               
                 client.BaseAddress = new Uri("Base Address/URL Address");
 
                 var json = JsonConvert.SerializeObject(songInfo, Formatting.Indented);
@@ -123,7 +129,7 @@ namespace PlayerUI
                
             Content = new StringContent(json, Encoding.UTF8, "application/json"),
                 Method = HttpMethod.Delete,
-                RequestUri = new Uri("http://localhost:8080/api/songs/delete")
+                RequestUri = new Uri("https://kdechurch.herokuapp.com/api/songs/delete")
             };
             await client.SendAsync(request).ContinueWith((s) => treeAllocation());
            
@@ -138,7 +144,7 @@ namespace PlayerUI
 
                 Content = new StringContent(albumInfo, Encoding.UTF8, "application/json"),
                 Method = HttpMethod.Delete,
-                RequestUri = new Uri("http://localhost:8080/api/album/delete")
+                RequestUri = new Uri("https://kdechurch.herokuapp.com/api/album/delete")
             };
             await client.SendAsync(request).ContinueWith((s) => treeAllocation());
            

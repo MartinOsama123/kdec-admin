@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using admin_panel;
+using System;
 using System.Windows.Forms;
 
 namespace PlayerUI
@@ -22,7 +16,6 @@ namespace PlayerUI
         {
             panelMediaSubMenu.Visible = false;
             panelPlaylistSubMenu.Visible = false;
-            panelToolsSubMenu.Visible = false;
         }
 
         private void showSubMenu(Panel subMenu)
@@ -90,9 +83,11 @@ namespace PlayerUI
             //..
             hideSubMenu();
         }
+        
 
         private void button7_Click(object sender, EventArgs e)
         {
+            openChildForm(new ScheduleForm());
             //..
             //your codes
             //..
@@ -118,7 +113,7 @@ namespace PlayerUI
 
         private void btnTools_Click(object sender, EventArgs e)
         {
-            showSubMenu(panelToolsSubMenu);
+            openChildForm(new CustomNotificationForm());
         }
         #region ToolsSubMenu
         private void button13_Click(object sender, EventArgs e)
@@ -156,7 +151,7 @@ namespace PlayerUI
 
         private void btnEqualizer_Click(object sender, EventArgs e)
         {
-            openChildForm(new Form3());
+            openChildForm(new UsersForm());
             //..
             //your codes
             //..
