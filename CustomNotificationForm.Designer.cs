@@ -80,6 +80,7 @@ namespace admin_panel
             this.button9.TabIndex = 16;
             this.button9.Text = "Notify Users";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // textBox2
             // 
@@ -101,6 +102,8 @@ namespace admin_panel
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Global"});
             this.comboBox1.Location = new System.Drawing.Point(116, 201);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(200, 23);

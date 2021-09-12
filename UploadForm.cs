@@ -70,10 +70,13 @@ namespace PlayerUI
             {
                 byte[] buffer = File.ReadAllBytes(dialog.FileNames[i]);
                 await UploadMultipartMP3(buffer, dialog.SafeFileNames[i], "https://kdechurch.herokuapp.com/church/upload");
-                uploadDatabase(new SongInfo(comboBox2.Text, comboBox1.Text, dialog.SafeFileNames[i]));
+                uploadDatabase(new SongInfo(comboBox2.Text, comboBox1.Text, dialog.SafeFileNames[i],textBox2.Text,0));
             }
-            byte[] buffer1 = File.ReadAllBytes(dialog1.FileName);
-           await UploadMultipartImage(buffer1, dialog1.SafeFileName, "https://kdechurch.herokuapp.com/api/upload/img/" + comboBox2.Text);
+            if (dialog1.CheckPathExists)
+            {
+                byte[] buffer1 = File.ReadAllBytes(dialog1.FileName);
+                await UploadMultipartImage(buffer1, dialog1.SafeFileName, "https://kdechurch.herokuapp.com/api/upload/img/" + comboBox2.Text);
+            }
             MessageBox.Show("File Uploaded Successfully.");
             textBox1.Clear();
             pictureBox1.Image = pictureBox1.InitialImage;
@@ -151,6 +154,11 @@ namespace PlayerUI
                 var result = streamReader.ReadToEnd();
             }
 
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

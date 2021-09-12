@@ -39,6 +39,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.browseBtn = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +78,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(14, 50);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(768, 125);
+            this.richTextBox1.Size = new System.Drawing.Size(311, 125);
             this.richTextBox1.TabIndex = 18;
             this.richTextBox1.Text = "";
             // 
@@ -150,13 +152,41 @@
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(465, 227);
+            this.pictureBox1.Location = new System.Drawing.Point(408, 127);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(317, 142);
+            this.pictureBox1.Size = new System.Drawing.Size(377, 274);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 25;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // browseBtn
+            // 
+            this.browseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.browseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
+            this.browseBtn.FlatAppearance.BorderSize = 0;
+            this.browseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.browseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.browseBtn.ForeColor = System.Drawing.Color.LightGray;
+            this.browseBtn.Location = new System.Drawing.Point(604, 21);
+            this.browseBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.browseBtn.Name = "browseBtn";
+            this.browseBtn.Size = new System.Drawing.Size(175, 46);
+            this.browseBtn.TabIndex = 27;
+            this.browseBtn.Text = "Browse";
+            this.browseBtn.UseVisualStyleBackColor = false;
+            this.browseBtn.Click += new System.EventHandler(this.browseBtn_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(424, 83);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(361, 29);
+            this.textBox1.TabIndex = 26;
+            this.textBox1.Text = "No MP3 Selected...";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Form3
             // 
@@ -164,6 +194,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(798, 497);
+            this.Controls.Add(this.browseBtn);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.title);
             this.Controls.Add(this.label4);
@@ -177,6 +209,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form3";
             this.Text = "Form3";
+            this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -194,5 +227,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox title;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button browseBtn;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

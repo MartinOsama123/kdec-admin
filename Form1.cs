@@ -9,6 +9,15 @@ namespace PlayerUI
         public Form1()
         {
             InitializeComponent();
+            
+            Button myButton = new Button();
+            myButton.Text = "some text";
+            myButton.BackColor = btnExit.BackColor;
+            myButton.ForeColor = btnExit.ForeColor;
+            // attach event handler for Click event 
+            // (assuming ButtonClickHandler is an existing method in the class)
+            myButton.Click += btnExit_Click;
+            this.Controls.Add(myButton);
             hideSubMenu();
         }
 
@@ -149,8 +158,9 @@ namespace PlayerUI
         }
         #endregion
 
-        private void btnEqualizer_Click(object sender, EventArgs e)
+        private  void btnEqualizer_Click(object sender, EventArgs e)
         {
+          
             openChildForm(new UsersForm());
             //..
             //your codes
@@ -160,10 +170,7 @@ namespace PlayerUI
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            //..
-            //your codes
-            //..
-            hideSubMenu();
+            openChildForm(new Dashboard());
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -182,6 +189,16 @@ namespace PlayerUI
             panelChildForm.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+        }
+
+        private void panelSideMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

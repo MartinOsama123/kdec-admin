@@ -25,6 +25,7 @@ namespace PlayerUI
 
         public static Label numLabel;
         public static int count = 0;
+        OpenFileDialog dialog;
         public Form3()
         {
             InitializeComponent();
@@ -73,10 +74,13 @@ namespace PlayerUI
             System.Diagnostics.Debug.WriteLine(token1);
 
             Rtc.JoinChannel(token1, title.Text, "", 0);
+            if (dialog != null) {
+                Rtc.StartAudioMixing(dialog.FileName,false,false,200);
+              }
             Post(new Session(title.Text,richTextBox1.Text,hostName.Text,comboBox1.Text, token1,dialog1.SafeFileName));
         
             byte[] buffer1 = File.ReadAllBytes(dialog1.FileName);
-            UploadMultipartImageAsync(buffer1, dialog1.SafeFileName, "form-data", "https://kdechurch.herokuapp.com/api/upload/img/" + dialog1.SafeFileName);
+            UploadMultipartImageAsync(buffer1, dialog1.SafeFileName, "form-data", "https://kdechurch.herokuapp.com/api/upload/img/session/" + dialog1.SafeFileName);
             MessageBox.Show(@"You are now Live, Start talking.", @"Message", MessageBoxButtons.OK);
 
 
@@ -554,6 +558,26 @@ namespace PlayerUI
             }
         }
 
-        
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void browseBtn_Click(object sender, EventArgs e)
+        {
+            dialog = new OpenFileDialog();
+            dialog.Filter = "(*.mp3)|*.mp3";
+            dialog.Multiselect = true;
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                textBox1.Text = String.Join(" ", dialog.FileNames);
+            }
+        }
     }
 }
