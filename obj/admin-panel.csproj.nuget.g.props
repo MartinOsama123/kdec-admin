@@ -7,7 +7,7 @@
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
     <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\PC\.nuget\packages\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.10.0</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.11.1</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\PC\.nuget\packages\" />
@@ -15,62 +15,8 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
-  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Content Include="$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\agora_rtc_sdk.dll" Condition="Exists('$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\agora_rtc_sdk.dll')">
-      <NuGetPackageId>agora_rtc_sdk</NuGetPackageId>
-      <NuGetPackageVersion>3.2.1.7</NuGetPackageVersion>
-      <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
-      <Private>False</Private>
-      <Link>agora_rtc_sdk.dll</Link>
-    </Content>
-    <Content Include="$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\iris.dll" Condition="Exists('$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\iris.dll')">
-      <NuGetPackageId>agora_rtc_sdk</NuGetPackageId>
-      <NuGetPackageVersion>3.2.1.7</NuGetPackageVersion>
-      <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
-      <Private>False</Private>
-      <Link>iris.dll</Link>
-    </Content>
-    <Content Include="$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-fdkaac.dll" Condition="Exists('$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-fdkaac.dll')">
-      <NuGetPackageId>agora_rtc_sdk</NuGetPackageId>
-      <NuGetPackageVersion>3.2.1.7</NuGetPackageVersion>
-      <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
-      <Private>False</Private>
-      <Link>libagora-fdkaac.dll</Link>
-    </Content>
-    <Content Include="$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-ffmpeg.dll" Condition="Exists('$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-ffmpeg.dll')">
-      <NuGetPackageId>agora_rtc_sdk</NuGetPackageId>
-      <NuGetPackageVersion>3.2.1.7</NuGetPackageVersion>
-      <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
-      <Private>False</Private>
-      <Link>libagora-ffmpeg.dll</Link>
-    </Content>
-    <Content Include="$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-mpg123.dll" Condition="Exists('$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-mpg123.dll')">
-      <NuGetPackageId>agora_rtc_sdk</NuGetPackageId>
-      <NuGetPackageVersion>3.2.1.7</NuGetPackageVersion>
-      <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
-      <Private>False</Private>
-      <Link>libagora-mpg123.dll</Link>
-    </Content>
-    <Content Include="$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-soundtouch.dll" Condition="Exists('$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-soundtouch.dll')">
-      <NuGetPackageId>agora_rtc_sdk</NuGetPackageId>
-      <NuGetPackageVersion>3.2.1.7</NuGetPackageVersion>
-      <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
-      <Private>False</Private>
-      <Link>libagora-soundtouch.dll</Link>
-    </Content>
-    <Content Include="$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libhwcodec.dll" Condition="Exists('$(NuGetPackageRoot)agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libhwcodec.dll')">
-      <NuGetPackageId>agora_rtc_sdk</NuGetPackageId>
-      <NuGetPackageVersion>3.2.1.7</NuGetPackageVersion>
-      <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
-      <Private>False</Private>
-      <Link>libhwcodec.dll</Link>
-    </Content>
-  </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">C:\Users\PC\.nuget\packages\awssdk.core\3.7.3.19</PkgAWSSDK_Core>
+    <PkgAWSSDK_S3 Condition=" '$(PkgAWSSDK_S3)' == '' ">C:\Users\PC\.nuget\packages\awssdk.s3\3.7.3.12</PkgAWSSDK_S3>
+  </PropertyGroup>
 </Project>

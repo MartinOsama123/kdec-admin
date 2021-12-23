@@ -27,11 +27,7 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {
-              "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\AgoraIO.csproj": {
-                "projectPath": "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\AgoraIO.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -44,13 +40,21 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "AWSSDK.Core": {
+              "target": "Package",
+              "version": "[3.7.3.19, )"
+            },
+            "AWSSDK.Extensions.NETCore.Setup": {
+              "target": "Package",
+              "version": "[3.7.1, )"
+            },
+            "AWSSDK.S3": {
+              "target": "Package",
+              "version": "[3.7.3.12, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
-            },
-            "agora_rtc_sdk": {
-              "target": "Package",
-              "version": "[3.2.1.7, )"
             }
           },
           "imports": [
@@ -71,68 +75,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\AgoraIO.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\AgoraIO.csproj",
-        "projectName": "AgoraIO",
-        "projectPath": "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\AgoraIO.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "netstandard2.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "netstandard2.0": {
-            "targetAlias": "netstandard2.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "netstandard2.0": {
-          "targetAlias": "netstandard2.0",
-          "dependencies": {
-            "Crc32.NET": {
-              "target": "Package",
-              "version": "[1.2.0, )"
-            },
-            "NETStandard.Library": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

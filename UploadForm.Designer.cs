@@ -38,14 +38,14 @@ namespace PlayerUI
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.confirmBtn = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(424, 69);
+            this.textBox1.Location = new System.Drawing.Point(19, 113);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -62,7 +62,7 @@ namespace PlayerUI
             this.browseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.browseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.browseBtn.ForeColor = System.Drawing.Color.LightGray;
-            this.browseBtn.Location = new System.Drawing.Point(609, 14);
+            this.browseBtn.Location = new System.Drawing.Point(398, 100);
             this.browseBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.browseBtn.Name = "browseBtn";
             this.browseBtn.Size = new System.Drawing.Size(175, 46);
@@ -80,40 +80,17 @@ namespace PlayerUI
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 24);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Language:";
+            this.label1.Text = "Category:";
             // 
             // comboBox1
             // 
             this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "English",
-            "Arabic",
-            "French",
-            "English",
-            "Arabic",
-            "French",
-            "English",
-            "Arabic",
-            "French",
-            "English",
-            "Arabic",
-            "French",
-            "English",
-            "Arabic",
-            "French",
-            "English",
-            "Arabic",
-            "French",
-            "English",
-            "Arabic",
-            "French"});
             this.comboBox1.Location = new System.Drawing.Point(136, 30);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(190, 23);
             this.comboBox1.TabIndex = 0;
-            this.comboBox1.Text = "English";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
@@ -170,24 +147,20 @@ namespace PlayerUI
             this.confirmBtn.UseVisualStyleBackColor = false;
             this.confirmBtn.Click += new System.EventHandler(this.confirmBtn_Click);
             // 
-            // label3
+            // progressBar1
             // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(19, 116);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 24);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Author:";
+            this.progressBar1.Location = new System.Drawing.Point(246, 248);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(414, 23);
+            this.progressBar1.TabIndex = 16;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
-            // textBox2
+            // backgroundWorker1
             // 
-            this.textBox2.Location = new System.Drawing.Point(136, 114);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(190, 23);
-            this.textBox2.TabIndex = 15;
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // UploadForm
             // 
@@ -195,8 +168,7 @@ namespace PlayerUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(798, 497);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.confirmBtn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.comboBox2);
@@ -224,7 +196,7 @@ namespace PlayerUI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button confirmBtn;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

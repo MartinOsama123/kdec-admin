@@ -2,65 +2,82 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "agora_rtc_sdk/3.2.1.7": {
+      "AWSSDK.Core/3.7.3.19": {
         "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.1-beta1"
-        },
         "compile": {
-          "lib/netcoreapp3.1/agorartc.dll": {}
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/agorartc.dll": {}
-        },
-        "contentFiles": {
-          "contentFiles/any/netcoreapp3.1/agora_rtc_sdk.dll": {
-            "buildAction": "Content",
-            "codeLanguage": "any",
-            "copyToOutput": false
-          },
-          "contentFiles/any/netcoreapp3.1/iris.dll": {
-            "buildAction": "Content",
-            "codeLanguage": "any",
-            "copyToOutput": false
-          },
-          "contentFiles/any/netcoreapp3.1/libagora-fdkaac.dll": {
-            "buildAction": "Content",
-            "codeLanguage": "any",
-            "copyToOutput": false
-          },
-          "contentFiles/any/netcoreapp3.1/libagora-ffmpeg.dll": {
-            "buildAction": "Content",
-            "codeLanguage": "any",
-            "copyToOutput": false
-          },
-          "contentFiles/any/netcoreapp3.1/libagora-mpg123.dll": {
-            "buildAction": "Content",
-            "codeLanguage": "any",
-            "copyToOutput": false
-          },
-          "contentFiles/any/netcoreapp3.1/libagora-soundtouch.dll": {
-            "buildAction": "Content",
-            "codeLanguage": "any",
-            "copyToOutput": false
-          },
-          "contentFiles/any/netcoreapp3.1/libhwcodec.dll": {
-            "buildAction": "Content",
-            "codeLanguage": "any",
-            "copyToOutput": false
-          }
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {}
         }
       },
-      "Crc32.NET/1.2.0": {
+      "AWSSDK.Extensions.NETCore.Setup/3.7.1": {
         "type": "package",
         "dependencies": {
-          "NETStandard.Library": "2.0.0"
+          "AWSSDK.Core": "3.7.0.43",
+          "Microsoft.Extensions.Configuration.Abstractions": "2.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "2.0.0"
         },
         "compile": {
-          "lib/netstandard2.0/Crc32.NET.dll": {}
+          "lib/netstandard2.0/AWSSDK.Extensions.NETCore.Setup.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Crc32.NET.dll": {}
+          "lib/netstandard2.0/AWSSDK.Extensions.NETCore.Setup.dll": {}
+        }
+      },
+      "AWSSDK.S3/3.7.3.12": {
+        "type": "package",
+        "dependencies": {
+          "AWSSDK.Core": "[3.7.3.19, 4.0.0)"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/AWSSDK.S3.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.S3.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.Abstractions/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Primitives/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.4.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.1": {
@@ -72,63 +89,133 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "AgoraIO/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Crc32.NET": "1.2.0"
-        },
+      "System.Runtime.CompilerServices.Unsafe/4.4.0": {
+        "type": "package",
         "compile": {
-          "bin/placeholder/AgoraIO.dll": {}
+          "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         },
         "runtime": {
-          "bin/placeholder/AgoraIO.dll": {}
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "agora_rtc_sdk/3.2.1.7": {
-      "sha512": "bnYZybTBqrT+IFixp+ZNxEKnm+ZS5fcmHRStiVu0JLgpQXlHHSbVjOjpDInFb46jAQsiM5t0crJruovJXxgaEw==",
+    "AWSSDK.Core/3.7.3.19": {
+      "sha512": "qgcAnE80NqEf9BSW942qi5yahKOjgBw35SiTPQD03JIWFddbxQh9fhfi1zqB+PdYYHFdbmMKJmUBsFEjeXZ/kw==",
       "type": "package",
-      "path": "agora_rtc_sdk/3.2.1.7",
+      "path": "awssdk.core/3.7.3.19",
+      "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "agora_rtc_sdk.3.2.1.7.nupkg.sha512",
-        "agora_rtc_sdk.nuspec",
-        "content/agora_rtc_sdk.dll",
-        "content/iris.dll",
-        "content/libagora-fdkaac.dll",
-        "content/libagora-ffmpeg.dll",
-        "content/libagora-mpg123.dll",
-        "content/libagora-soundtouch.dll",
-        "content/libhwcodec.dll",
-        "contentFiles/any/netcoreapp3.1/agora_rtc_sdk.dll",
-        "contentFiles/any/netcoreapp3.1/iris.dll",
-        "contentFiles/any/netcoreapp3.1/libagora-fdkaac.dll",
-        "contentFiles/any/netcoreapp3.1/libagora-ffmpeg.dll",
-        "contentFiles/any/netcoreapp3.1/libagora-mpg123.dll",
-        "contentFiles/any/netcoreapp3.1/libagora-soundtouch.dll",
-        "contentFiles/any/netcoreapp3.1/libhwcodec.dll",
-        "lib/netcoreapp3.1/agorartc.dll"
+        "awssdk.core.3.7.3.19.nupkg.sha512",
+        "awssdk.core.nuspec",
+        "lib/net35/AWSSDK.Core.dll",
+        "lib/net35/AWSSDK.Core.pdb",
+        "lib/net35/AWSSDK.Core.xml",
+        "lib/net45/AWSSDK.Core.dll",
+        "lib/net45/AWSSDK.Core.pdb",
+        "lib/net45/AWSSDK.Core.xml",
+        "lib/netcoreapp3.1/AWSSDK.Core.dll",
+        "lib/netcoreapp3.1/AWSSDK.Core.pdb",
+        "lib/netcoreapp3.1/AWSSDK.Core.xml",
+        "lib/netstandard2.0/AWSSDK.Core.dll",
+        "lib/netstandard2.0/AWSSDK.Core.pdb",
+        "lib/netstandard2.0/AWSSDK.Core.xml",
+        "tools/account-management.ps1"
       ]
     },
-    "Crc32.NET/1.2.0": {
-      "sha512": "wNW/huzolu8MNKUnwCVKxjfAlCFpeI8AZVfF46iAWJ1+P6bTU1AZct7VAkDDEjgeeTJCVTkGZaD6jSd/fOiUkA==",
+    "AWSSDK.Extensions.NETCore.Setup/3.7.1": {
+      "sha512": "cm7D75uispA3h/WwMEQVBMmFPPFwRvFQz8fyLwJEB9uqWYfTOMrRTcynMxHnrdoMyQnfCjByRTzHuFgWELmB6Q==",
       "type": "package",
-      "path": "crc32.net/1.2.0",
+      "path": "awssdk.extensions.netcore.setup/3.7.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "crc32.net.1.2.0.nupkg.sha512",
-        "crc32.net.nuspec",
-        "lib/net20/Crc32.NET.dll",
-        "lib/net20/Crc32.NET.xml",
-        "lib/netstandard1.3/Crc32.NET.dll",
-        "lib/netstandard1.3/Crc32.NET.xml",
-        "lib/netstandard2.0/Crc32.NET.dll",
-        "lib/netstandard2.0/Crc32.NET.xml"
+        "awssdk.extensions.netcore.setup.3.7.1.nupkg.sha512",
+        "awssdk.extensions.netcore.setup.nuspec",
+        "lib/netstandard2.0/AWSSDK.Extensions.NETCore.Setup.dll",
+        "lib/netstandard2.0/AWSSDK.Extensions.NETCore.Setup.pdb"
+      ]
+    },
+    "AWSSDK.S3/3.7.3.12": {
+      "sha512": "u30Il7DzQpR6qZciWdO/cSg0ugZQTr+M3w5/IBJ9Ak9htOXqtYp8MxcLVNN2eDJEMtQ+/EIzl/I6/dnpkgNCdg==",
+      "type": "package",
+      "path": "awssdk.s3/3.7.3.12",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "analyzers/dotnet/cs/AWSSDK.S3.CodeAnalysis.dll",
+        "awssdk.s3.3.7.3.12.nupkg.sha512",
+        "awssdk.s3.nuspec",
+        "lib/net35/AWSSDK.S3.dll",
+        "lib/net35/AWSSDK.S3.pdb",
+        "lib/net35/AWSSDK.S3.xml",
+        "lib/net45/AWSSDK.S3.dll",
+        "lib/net45/AWSSDK.S3.pdb",
+        "lib/net45/AWSSDK.S3.xml",
+        "lib/netcoreapp3.1/AWSSDK.S3.dll",
+        "lib/netcoreapp3.1/AWSSDK.S3.pdb",
+        "lib/netcoreapp3.1/AWSSDK.S3.xml",
+        "lib/netstandard2.0/AWSSDK.S3.dll",
+        "lib/netstandard2.0/AWSSDK.S3.pdb",
+        "lib/netstandard2.0/AWSSDK.S3.xml",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.Abstractions/2.0.0": {
+      "sha512": "rHFrXqMIvQNq51H8RYTO4IWmDOYh8NUzyqGlh0xHWTP6XYnKk7Ryinys2uDs+Vu88b3AMlM3gBBSs78m6OQpYQ==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.abstractions/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
+        "microsoft.extensions.configuration.abstractions.2.0.0.nupkg.sha512",
+        "microsoft.extensions.configuration.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/2.0.0": {
+      "sha512": "eUdJ0Q/GfVyUJc0Jal5L1QZLceL78pvEM9wEKcHeI24KorqMDoVX+gWsMGLulQMfOwsUaPtkpQM2pFERTzSfSg==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "microsoft.extensions.dependencyinjection.abstractions.2.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Logging.Abstractions/2.0.0": {
+      "sha512": "6ZCllUYGFukkymSTx3Yr0G/ajRxoNJp7/FqSxSB4fGISST54ifBhgu4Nc0ItGi3i6DqwuNd8SUyObmiC++AO2Q==",
+      "type": "package",
+      "path": "microsoft.extensions.logging.abstractions/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
+        "microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Primitives/2.0.0": {
+      "sha512": "ukg53qNlqTrK38WA30b5qhw0GD7y3jdI9PHHASjdKyTcBHTevFM2o23tyk3pWCgAV27Bbkm+CPQ2zUe1ZOuYSA==",
+      "type": "package",
+      "path": "microsoft.extensions.primitives/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
+        "microsoft.extensions.primitives.2.0.0.nupkg.sha512",
+        "microsoft.extensions.primitives.nuspec"
       ]
     },
     "Newtonsoft.Json/13.0.1": {
@@ -158,17 +245,36 @@
         "packageIcon.png"
       ]
     },
-    "AgoraIO/1.0.0": {
-      "type": "project",
-      "path": "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\AgoraIO.csproj",
-      "msbuildProject": "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\AgoraIO.csproj"
+    "System.Runtime.CompilerServices.Unsafe/4.4.0": {
+      "sha512": "9dLLuBxr5GNmOfl2jSMcsHuteEg32BEfUotmmUkmZjpR3RpVHE8YQwt0ow3p6prwA1ME8WqDVZqrr8z6H8G+Kw==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.4.4.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "AgoraIO >= 1.0.0",
-      "Newtonsoft.Json >= 13.0.1",
-      "agora_rtc_sdk >= 3.2.1.7"
+      "AWSSDK.Core >= 3.7.3.19",
+      "AWSSDK.Extensions.NETCore.Setup >= 3.7.1",
+      "AWSSDK.S3 >= 3.7.3.12",
+      "Newtonsoft.Json >= 13.0.1"
     ]
   },
   "packageFolders": {
@@ -197,11 +303,7 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {
-            "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\AgoraIO.csproj": {
-              "projectPath": "F:\\Tools\\DynamicKey\\AgoraDynamicKey\\csharp\\src\\AgoraIO\\AgoraIO.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -214,13 +316,21 @@
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
         "dependencies": {
+          "AWSSDK.Core": {
+            "target": "Package",
+            "version": "[3.7.3.19, )"
+          },
+          "AWSSDK.Extensions.NETCore.Setup": {
+            "target": "Package",
+            "version": "[3.7.1, )"
+          },
+          "AWSSDK.S3": {
+            "target": "Package",
+            "version": "[3.7.3.12, )"
+          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.1, )"
-          },
-          "agora_rtc_sdk": {
-            "target": "Package",
-            "version": "[3.2.1.7, )"
           }
         },
         "imports": [
@@ -241,7 +351,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

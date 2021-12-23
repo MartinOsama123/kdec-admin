@@ -24,7 +24,7 @@ namespace PlayerUI
         private void hideSubMenu()
         {
             panelMediaSubMenu.Visible = false;
-            panelPlaylistSubMenu.Visible = false;
+           
         }
 
         private void showSubMenu(Panel subMenu)
@@ -40,6 +40,7 @@ namespace PlayerUI
 
         private void btnMedia_Click(object sender, EventArgs e)
         {
+            /*openChildForm(new UploadForm());*/
             showSubMenu(panelMediaSubMenu);
         }
 
@@ -80,7 +81,7 @@ namespace PlayerUI
 
         private void btnPlaylist_Click(object sender, EventArgs e)
         {
-            showSubMenu(panelPlaylistSubMenu);
+            openChildForm(new Form3());
         }
 
         #region PlayListManagemetSubMenu

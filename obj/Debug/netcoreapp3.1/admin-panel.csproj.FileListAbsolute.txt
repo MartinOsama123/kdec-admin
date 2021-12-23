@@ -35,3 +35,10 @@ C:\Users\PC\source\repos\admin-panel\admin-panel\obj\Debug\netcoreapp3.1\admin_p
 C:\Users\PC\source\repos\admin-panel\admin-panel\obj\Debug\netcoreapp3.1\admin_panel.UsersForm.resources
 C:\Users\PC\source\repos\admin-panel\admin-panel\obj\Debug\netcoreapp3.1\admin_panel.CustomNotificationForm.resources
 C:\Users\PC\source\repos\admin-panel\admin-panel\obj\Debug\netcoreapp3.1\admin_panel.Dashboard.resources
+C:\Users\PC\source\repos\admin-panel\admin-panel\bin\Debug\netcoreapp3.1\AWSSDK.Core.dll
+C:\Users\PC\source\repos\admin-panel\admin-panel\bin\Debug\netcoreapp3.1\AWSSDK.Extensions.NETCore.Setup.dll
+C:\Users\PC\source\repos\admin-panel\admin-panel\bin\Debug\netcoreapp3.1\AWSSDK.S3.dll
+C:\Users\PC\source\repos\admin-panel\admin-panel\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\PC\source\repos\admin-panel\admin-panel\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\PC\source\repos\admin-panel\admin-panel\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\PC\source\repos\admin-panel\admin-panel\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll

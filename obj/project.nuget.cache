@@ -1,12 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "+JNPQJagZNrw8CdF/L+x3jf1Lsk0m6BFQIbUsVmbJkmfic4B9qmHU1aJ5BsL8KIl9qO1HvGjk2VOCeHJ1mDDrA==",
+  "dgSpecHash": "GMN9fxYbh+FCZ0oFGR4pxPhMUlKPiJcdKhw4ucoIXx10V0r0cQsIanwZSowNy3DKE3EAAEO0rlFWl39EraCZnA==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\source\\repos\\admin-panel\\admin-panel\\admin-panel.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\PC\\.nuget\\packages\\agora_rtc_sdk\\3.2.1.7\\agora_rtc_sdk.3.2.1.7.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\crc32.net\\1.2.0\\crc32.net.1.2.0.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\PC\\.nuget\\packages\\awssdk.core\\3.7.3.19\\awssdk.core.3.7.3.19.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\awssdk.extensions.netcore.setup\\3.7.1\\awssdk.extensions.netcore.setup.3.7.1.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\awssdk.s3\\3.7.3.12\\awssdk.s3.3.7.3.12.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\2.0.0\\microsoft.extensions.configuration.abstractions.2.0.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.0.0\\microsoft.extensions.dependencyinjection.abstractions.2.0.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.primitives\\2.0.0\\microsoft.extensions.primitives.2.0.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.4.0\\system.runtime.compilerservices.unsafe.4.4.0.nupkg.sha512"
   ],
   "logs": []
 }

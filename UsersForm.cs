@@ -25,7 +25,7 @@ namespace admin_panel
             header.Text = "Names";
           
             header.Name = "col1";
-            header.Width = 30;
+            header.Width = listView1.Width;
             listView1.Columns.Add(header);
             listView1.MultiSelect = false;
        

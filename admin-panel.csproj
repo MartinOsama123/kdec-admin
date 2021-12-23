@@ -8,12 +8,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="agora_rtc_sdk" Version="3.2.1.7" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <Content Remove="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\agora_rtc_sdk.dll" />
+    <Content Remove="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\iris.dll" />
+    <Content Remove="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-fdkaac.dll" />
+    <Content Remove="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-ffmpeg.dll" />
+    <Content Remove="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-mpg123.dll" />
+    <Content Remove="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-soundtouch.dll" />
+    <Content Remove="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libhwcodec.dll" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="F:\Tools\DynamicKey\AgoraDynamicKey\csharp\src\AgoraIO\AgoraIO.csproj" />
+    <PackageReference Include="AWSSDK.Core" Version="3.7.3.19" />
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.1" />
+    <PackageReference Include="AWSSDK.S3" Version="3.7.3.12" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,30 +30,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\agora_rtc_sdk.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\iris.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-fdkaac.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-ffmpeg.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-mpg123.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libagora-soundtouch.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="C:\Users\PC\.nuget\packages\agora_rtc_sdk\3.2.1.7\contentFiles\any\netcoreapp3.1\libhwcodec.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>

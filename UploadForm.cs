@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization.Json;
@@ -13,6 +10,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Windows.Forms;
 using admin_panel;
+using Amazon.S3;
+using Amazon.S3.Model;
 
 namespace PlayerUI
 {
@@ -20,16 +19,27 @@ namespace PlayerUI
     {
         OpenFileDialog dialog;
         OpenFileDialog dialog1;
+        string albumName, authorName, lang;
+        List<Category> categories;
+
+
         public UploadForm()
         {
             InitializeComponent();
-            populateAlbums();
-            comboBox1.SelectedItem = comboBox1?.Items[0] ?? "";
+       
+            progressBar1.Visible = false;
+           
+             populateCategories();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            comboBox2.Items.Clear();
+            comboBox2.Text = "Loading...";
+            if(comboBox1.Text != "")
+            {
+                populateAlbums(comboBox1.Text);
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -63,24 +73,57 @@ namespace PlayerUI
                 textBox1.Text = String.Join(" ", dialog.FileNames);
             }
         }
+        public async Task UploadFile(String keyName,String filePath)
+        {
+            var client = new AmazonS3Client(Amazon.RegionEndpoint.EUWest1);
+            Console.WriteLine("yeaa");
+            System.Diagnostics.Debug.WriteLine(albumName + Path.GetExtension(dialog1.FileName));
+            try
+            {
+          
+                PutObjectRequest putRequest = new PutObjectRequest
+                {
+                    BucketName = "churchappb6ce25bec93d49ac8ba023a0f6d7fb6b114009-dev",
+                    Key = keyName,
+                    FilePath = filePath,
+                    
+                };
+
+                PutObjectResponse response = await client.PutObjectAsync(putRequest);
+             
+            }
+            catch (AmazonS3Exception amazonS3Exception)
+            {
+                if (amazonS3Exception.ErrorCode != null &&
+                    (amazonS3Exception.ErrorCode.Equals("InvalidAccessKeyId")
+                    ||
+                    amazonS3Exception.ErrorCode.Equals("InvalidSecurity")))
+                {
+                    throw new Exception("Check the provided AWS Credentials.");
+                }
+                else
+                {
+                    throw new Exception("Error occurred: " + amazonS3Exception.Message);
+                }
+            }
+        }
+
 
         private async void confirmBtn_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dialog.FileNames.Length; i++)
-            {
-                byte[] buffer = File.ReadAllBytes(dialog.FileNames[i]);
-                await UploadMultipartMP3(buffer, dialog.SafeFileNames[i], "https://kdechurch.herokuapp.com/church/upload");
-                uploadDatabase(new SongInfo(comboBox2.Text, comboBox1.Text, dialog.SafeFileNames[i],textBox2.Text,0));
-            }
-            if (dialog1.CheckPathExists)
-            {
-                byte[] buffer1 = File.ReadAllBytes(dialog1.FileName);
-                await UploadMultipartImage(buffer1, dialog1.SafeFileName, "https://kdechurch.herokuapp.com/api/upload/img/" + comboBox2.Text);
-            }
-            MessageBox.Show("File Uploaded Successfully.");
-            textBox1.Clear();
-            pictureBox1.Image = pictureBox1.InitialImage;
-            sendNotification(comboBox2.Text,"Global");
+            progressBar1.Maximum = dialog.FileNames.Length;
+            progressBar1.Step = 1;
+            progressBar1.Value = 0;
+            progressBar1.Visible = true;
+            textBox1.Visible = false;  label1.Visible = false; label2.Visible = false;  pictureBox1.Visible = false; confirmBtn.Visible = false; browseBtn.Visible = false;
+        
+            albumName = comboBox2.Text;
+            lang = comboBox1.Text;
+            authorName = "";
+             var task =  Task.Run(() => backgroundWorker1.RunWorkerAsync());
+          
+
+
         }
         public async Task UploadMultipartMP3(byte[] file, string filename, string url)
         {
@@ -116,22 +159,82 @@ namespace PlayerUI
                 string resultContent = await result.Content.ReadAsStringAsync();
             }
         }
-        public async Task<List<AlbumInfo>> getAlbumsAsync()
+        public async void createCategory(Category category)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://kdechurch.herokuapp.com");
+                var json = JsonConvert.SerializeObject(category, Formatting.Indented);
+
+
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var result = await client.PostAsync("/api/category/add", content);
+                string resultContent = await result.Content.ReadAsStringAsync();
+            }
+        }
+        public async Task uploadAlbumImgDatabase(AlbumInfo albumInfo)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://kdechurch.herokuapp.com");
+                var json = JsonConvert.SerializeObject(albumInfo, Formatting.Indented);
+
+
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                Console.WriteLine(content);
+                var result = await client.PostAsync("/api/upload/img", content);
+                string resultContent = await result.Content.ReadAsStringAsync();
+            }
+        }
+        public async Task<List<Category>> getCategories()
         {
             var client = new HttpClient();
-            var uri = new Uri("https://kdechurch.herokuapp.com/api/albums");
+            var uri = new Uri("https://kdechurch.herokuapp.com/api/category");
+            Stream respStream = await client.GetStreamAsync(uri);
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(List<Category>));
+            List<Category> feed = (List<Category>)ser.ReadObject(respStream);
+
+            return feed;
+        }
+        public async Task<List<AlbumInfo>> getAlbumsAsync(String name)
+        {
+            var client = new HttpClient();
+            var uri = new Uri("https://kdechurch.herokuapp.com/api/albums/category/"+name);
             Stream respStream = await client.GetStreamAsync(uri);
             DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(List<AlbumInfo>));
             List<AlbumInfo> feed = (List<AlbumInfo>)ser.ReadObject(respStream);
 
             return feed;
         }
-        public async void populateAlbums()
+     
+
+        public async void populateAlbums(String name)
         {
-            List<AlbumInfo> s = await getAlbumsAsync();
+            List<AlbumInfo> s = await getAlbumsAsync(name);
+            comboBox2.Text = "";
             foreach(var t in s)
             {
                 comboBox2.Items.Add(t.albumName);
+            }
+            if(comboBox2.Items.Count != 0)
+            {
+                comboBox2.SelectedIndex = 0;
+            }
+        }
+        public async void populateCategories()
+        {
+            comboBox1.Text = "Loading...";
+            categories = await getCategories();
+            comboBox1.Text = "";
+            foreach (var t in categories)
+            {
+                
+                comboBox1.Items.Add(t.categoryTitle);
+            }
+            if(comboBox1.Items.Count != 0)
+            {
+                comboBox1.SelectedIndex = 0;
             }
         }
         private void sendNotification(string album, string channel)
@@ -160,6 +263,58 @@ namespace PlayerUI
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show(albumName + Path.GetExtension(dialog1.FileName));
+            this.Invoke(new Action(() => {
+                textBox1.Visible = true;  label1.Visible = true; label2.Visible = true;  pictureBox1.Visible = true; confirmBtn.Visible = true; browseBtn.Visible = true;
+                progressBar1.Visible = false;
+                textBox1.Clear();
+                pictureBox1.Image = null;
+                pictureBox1.Image = pictureBox1.InitialImage;
+                sendNotification(comboBox2.Text, "Global");
+            }));
+           
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var backgroundWorker = sender as BackgroundWorker;
+            /*if (!comboBox1.Items.Contains(lang))
+            {
+                createCategory(new Category(lang));
+            }*/
+            for (int i = 0; i < dialog.FileNames.Length; i++)
+            {
+                var task1 = UploadFile("public/"+albumName + "/" + dialog.SafeFileNames[i], dialog.FileNames[i]);
+                task1.Wait();
+                uploadDatabase(new SongInfo(albumName, lang, dialog.SafeFileNames[i], "", 0));
+
+               
+                backgroundWorker.ReportProgress(i+1);
+            }
+        /*  if (dialog1 != null && dialog1.CheckPathExists)
+            {
+               
+                var task = UploadFile("public/"+albumName + "/" + albumName+ Path.GetExtension(dialog1.FileName), dialog1.FileName);
+                task.Wait();
+                var task3 = uploadAlbumImgDatabase(new AlbumInfo(albumName, lang, albumName + Path.GetExtension(dialog1.FileName)));
+                task3.Wait();
+            }*/
+          
+        }
+
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            this.Invoke(new Action(() => progressBar1.Value = e.ProgressPercentage));
         }
     }
 }
