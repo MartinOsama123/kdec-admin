@@ -16,12 +16,12 @@ namespace admin_panel
         public CustomNotificationForm()
         {
             InitializeComponent();
-            comboBox1.SelectedItem = comboBox1?.Items[0] ?? "";
+           
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            sendNotification(textBox1.Text, textBox2.Text, comboBox1.Text);
+            sendNotification(textBox1.Text, textBox2.Text, "Global");
         }
         private void sendNotification(string title,string body, string channel)
         {

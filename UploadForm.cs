@@ -28,7 +28,7 @@ namespace PlayerUI
             InitializeComponent();
        
             progressBar1.Visible = false;
-           
+            label3.Visible = false;
              populateCategories();
         }
 
@@ -52,15 +52,7 @@ namespace PlayerUI
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            dialog1 = new OpenFileDialog();
-            dialog1.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
-            if (dialog1.ShowDialog() == DialogResult.OK)
-            {
-                pictureBox1.ImageLocation = dialog1.FileName;
-            }
-        }
+       
 
         private void browseBtn_Click(object sender, EventArgs e)
         {
@@ -115,8 +107,10 @@ namespace PlayerUI
             progressBar1.Step = 1;
             progressBar1.Value = 0;
             progressBar1.Visible = true;
-            textBox1.Visible = false;  label1.Visible = false; label2.Visible = false;  pictureBox1.Visible = false; confirmBtn.Visible = false; browseBtn.Visible = false;
-        
+            label3.Visible = true;
+            
+            textBox1.Visible = false;  label1.Visible = false; label2.Visible = false;  confirmBtn.Visible = false; browseBtn.Visible = false; comboBox1.Visible = false; comboBox2.Visible = false;
+
             albumName = comboBox2.Text;
             lang = comboBox1.Text;
             authorName = "";
@@ -125,7 +119,7 @@ namespace PlayerUI
 
 
         }
-        public async Task UploadMultipartMP3(byte[] file, string filename, string url)
+    /*    public async Task UploadMultipartMP3(byte[] file, string filename, string url)
         {
             HttpClient httpClient = new HttpClient();
             MultipartFormDataContent form = new MultipartFormDataContent();
@@ -144,8 +138,8 @@ namespace PlayerUI
             HttpResponseMessage response = await httpClient.PostAsync(url, form);
             response.EnsureSuccessStatusCode();
             httpClient.Dispose();
-        }
-        public async void uploadDatabase(SongInfo songInfo)
+        }*/
+        public async Task uploadDatabase(SongInfo songInfo)
         {
             using (var client = new HttpClient())
             {
@@ -159,21 +153,8 @@ namespace PlayerUI
                 string resultContent = await result.Content.ReadAsStringAsync();
             }
         }
-        public async void createCategory(Category category)
-        {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("https://kdechurch.herokuapp.com");
-                var json = JsonConvert.SerializeObject(category, Formatting.Indented);
-
-
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var result = await client.PostAsync("/api/category/add", content);
-                string resultContent = await result.Content.ReadAsStringAsync();
-            }
-        }
-        public async Task uploadAlbumImgDatabase(AlbumInfo albumInfo)
+       
+      /*  public async Task uploadAlbumImgDatabase(AlbumInfo albumInfo)
         {
             using (var client = new HttpClient())
             {
@@ -186,7 +167,7 @@ namespace PlayerUI
                 var result = await client.PostAsync("/api/upload/img", content);
                 string resultContent = await result.Content.ReadAsStringAsync();
             }
-        }
+        }*/
         public async Task<List<Category>> getCategories()
         {
             var client = new HttpClient();
@@ -272,13 +253,13 @@ namespace PlayerUI
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show(albumName + Path.GetExtension(dialog1.FileName));
+            
             this.Invoke(new Action(() => {
-                textBox1.Visible = true;  label1.Visible = true; label2.Visible = true;  pictureBox1.Visible = true; confirmBtn.Visible = true; browseBtn.Visible = true;
+                textBox1.Visible = true;  label1.Visible = true; label2.Visible = true;   confirmBtn.Visible = true; browseBtn.Visible = true; comboBox1.Visible = true; comboBox2.Visible = true;
                 progressBar1.Visible = false;
+                label3.Visible = false;
                 textBox1.Clear();
-                pictureBox1.Image = null;
-                pictureBox1.Image = pictureBox1.InitialImage;
+              
                 sendNotification(comboBox2.Text, "Global");
             }));
            
@@ -293,11 +274,11 @@ namespace PlayerUI
             }*/
             for (int i = 0; i < dialog.FileNames.Length; i++)
             {
-                var task1 = UploadFile("public/"+albumName + "/" + dialog.SafeFileNames[i], dialog.FileNames[i]);
+                this.Invoke(new Action(() => { label3.Text = String.Format("Files Uploaded ({0} / {1}), Please wait...", i, dialog.FileNames.Length); }));
+                var task1 = UploadFile("public/" + albumName + "/" + dialog.SafeFileNames[i], dialog.FileNames[i]);
                 task1.Wait();
-                uploadDatabase(new SongInfo(albumName, lang, dialog.SafeFileNames[i], "", 0));
-
-               
+                var task2 = uploadDatabase(new SongInfo(albumName, lang, dialog.SafeFileNames[i], "", 0));
+                task2.Wait();
                 backgroundWorker.ReportProgress(i+1);
             }
         /*  if (dialog1 != null && dialog1.CheckPathExists)

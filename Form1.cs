@@ -65,9 +65,8 @@ namespace PlayerUI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //..
-            //your codes
-        
+            openChildForm(new AlbumForm());
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -114,10 +113,7 @@ namespace PlayerUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //..
-            //your codes
-            //..
-            hideSubMenu();
+            openChildForm(new CategoryForm());
         }
         #endregion
 
@@ -166,7 +162,7 @@ namespace PlayerUI
             //..
             //your codes
             //..
-            hideSubMenu();
+           /* hideSubMenu();*/
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
@@ -200,6 +196,11 @@ namespace PlayerUI
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            openChildForm(new CoverForm());
         }
     }
 }

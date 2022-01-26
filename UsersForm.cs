@@ -5,11 +5,13 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace admin_panel
 {
@@ -21,12 +23,24 @@ namespace admin_panel
             InitializeComponent();
             listView1.Scrollable = true;
             listView1.View = View.Details;
+            richTextBox1.ReadOnly = true;
             ColumnHeader header = new ColumnHeader();
-            header.Text = "Names";
+            header.Text = "Name";
           
             header.Name = "col1";
-            header.Width = listView1.Width;
+            header.Width = 200;
             listView1.Columns.Add(header);
+            ColumnHeader header1 = new ColumnHeader();
+            header1.Text = "Email";
+            header1.Name = "col2";
+            header1.Width = 300;
+            listView1.Columns.Add(header1);
+            ColumnHeader header2 = new ColumnHeader();
+            header2.Text = "Age";
+
+            header2.Name = "col3";
+            header2.Width = 50;
+            listView1.Columns.Add(header2);
             listView1.MultiSelect = false;
        
 
@@ -138,9 +152,11 @@ namespace admin_panel
             var uri = new Uri("https://kdechurch.herokuapp.com/api/users/messages");
 
             Stream respStream = await client.GetStreamAsync(uri);
+           
             DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(List<UserModel>));
+          
             List<UserModel> feed = (List<UserModel>)ser.ReadObject(respStream);
-
+         
             return feed;
         }
 
@@ -149,17 +165,41 @@ namespace admin_panel
             users = await getMessages();
             foreach (var user in users)
             {
+            
+                
                 ListViewItem listViewItem = new ListViewItem();
 
                 listViewItem.Text = user.name;
-                Debug.WriteLine(listViewItem.Text);
+                listViewItem.SubItems.Add(user.email);
+                listViewItem.SubItems.Add(user.age.ToString());
                 listView1.Items.Add(listViewItem);
-              
+                
 
             }
 
         }
+        private void sendNotification(string album, string channel)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://kdechurch.herokuapp.com/api/send-notification");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+            Note note = new Note("New Album Release", album, channel);
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                var json = JsonConvert.SerializeObject(note, Formatting.Indented);
 
+                System.Diagnostics.Debug.WriteLine(json);
+                streamWriter.Write(json);
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+            }
+
+
+        }
         private void listView1_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
             e.DrawDefault = true;
@@ -168,6 +208,34 @@ namespace admin_panel
         private void listView1_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             e.DrawDefault = true;
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+             await addMessage(richTextBox2.Text.ToString().Trim());
+            sendNotification("You got a new msg", "Global");
+            richTextBox1.Text = "";
+            //string RTL = ((char)0x200E).ToString();
+            foreach (string s in users[listView1.SelectedIndices[0]].messages)
+            {
+                richTextBox1.AppendText(String.Format("{0}",s));
+                richTextBox1.AppendText("\n\n-----------------------------\n\n");
+
+            }
+        }
+        public async Task addMessage(string message)
+        {
+          
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://kdechurch.herokuapp.com");
+                var json = JsonConvert.SerializeObject(message, Formatting.Indented);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var result = await client.PostAsync("/api/messages/create/admin/" + users[listView1.SelectedIndices[0]].email, content);
+                string resultContent = await result.Content.ReadAsStringAsync();
+             
+            }
+          
         }
     }
 }
